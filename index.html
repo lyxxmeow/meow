@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            background-color: white; /* Changed to white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        /* Popup box styling */
+        .popup {
+            background-color: #ece9d8;
+            border: 2px solid #000;
+            width: 350px;
+            box-shadow: 4px 4px 0px #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            z-index: 10;
+        }
+
+        .popup-header {
+            background-color: #000080;
+            color: white;
+            padding: 4px;
+            font-size: 14px;
+        }
+
+        .popup-content {
+            padding: 15px;
+            font-size: 14px;
+            color: black;
+        }
+
+        .popup-buttons {
+            text-align: right;
+            padding: 0 10px 10px;
+        }
+
+        .popup-buttons button {
+            font-size: 14px;
+            padding: 2px 10px;
+            border: 1px solid #808080;
+            background-color: #ece9d8;
+            cursor: pointer;
+        }
+
+        /* Image styling */
+        img {
+            max-width: 90%;
+            max-height: 90%;
+            cursor: pointer;
+            display: none;
+            border: none; /* No border */
+            box-shadow: none; /* No shadow */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fake Y2K Windows popup -->
+    <div class="popup" id="popupBox">
+        <div class="popup-header">Error</div>
+        <div class="popup-content">
+            Error 143: Happy Birthday Abid<br><br>
+            Click OK to claim your gift.
+        </div>
+        <div class="popup-buttons">
+            <button id="okButton">OK</button>
+        </div>
+    </div>
+
+    <!-- Gift image -->
+    <img id="giftImage" src="" alt="Birthday Gift">
+
+    <script>
+        const popup = document.getElementById('popupBox');
+        const okButton = document.getElementById('okButton');
+        const img = document.getElementById('giftImage');
+        let step = 1;
+
+        // ⬇ Replace with your own images ⬇
+        const firstImage = 'images/first.jpg';
+        const secondImage = 'images/second.jpg';
+        // ⬆ Replace with your own images ⬆
+
+        okButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+            img.src = firstImage;
+            img.style.display = 'block';
+        });
+
+        img.addEventListener('click', () => {
+            if (step === 1) {
+                img.src = secondImage;
+                step++;
+            }
+        });
+    </script>
+
+</body>
+</html>
